@@ -1,6 +1,6 @@
 import streamlit as st
 from params import *
-from main import download_satellite_image
+from main.main_file import download_satellite_image
 
 
 st.markdown("""# Satellite Image Downloader """)
