@@ -5,6 +5,7 @@ import requests
 import base64
 from PIL import Image
 import io
+from params import *
 
 def get_df():
 
@@ -27,7 +28,7 @@ def get_titanic():
 
 
 # Function to download the satellite image
-def download_satellite_image(api_key, latitude, longitude, zoom=12, size='600x600'):
+def download_satellite_image(api_key, latitude, longitude, zoom=21, size='600x600'):
     url = f"https://maps.googleapis.com/maps/api/staticmap?center={latitude},{longitude}&zoom={zoom}&size={size}&maptype=satellite&key={api_key}"
     response = requests.get(url)
     if response.status_code == 200:
@@ -39,7 +40,8 @@ def download_satellite_image(api_key, latitude, longitude, zoom=12, size='600x60
 # Function to count trees via local API
 def count_trees(Lat, Long):
 
-    url = f"http://127.0.0.1:8000/counttrees?lat={Lat}&long={Long}" #### to be changed to website URL
+    ##url = f"http://127.0.0.1:8000/counttrees?lat={Lat}&long={Long}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
+    url = f"https://baseprojectapi-jf3na7mc5a-ew.a.run.app/counttrees?lat={Lat}&long={Long}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
     response = requests.get(url)
 
     if response.status_code == 200:
