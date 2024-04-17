@@ -6,6 +6,7 @@ import base64
 from PIL import Image
 import io
 from params import *
+import math
 
 def get_df():
 
@@ -38,10 +39,10 @@ def download_satellite_image(api_key, latitude, longitude, zoom=21, size='600x60
 
 
 # Function to count trees via local API
-def count_trees(Lat, Long):
+def count_trees(Lat, Long, step):
 
-    ##url = f"http://127.0.0.1:8000/counttrees?lat={Lat}&long={Long}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
-    url = f"https://baseprojectapi-jf3na7mc5a-ew.a.run.app/counttrees?lat={Lat}&long={Long}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
+    url = f"http://127.0.0.1:8000/counttrees?lat={Lat}&long={Long}&step={step}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
+    ##url = f"https://baseprojectapi-jf3na7mc5a-ew.a.run.app/counttrees?lat={Lat}&long={Long}&step={step}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -56,3 +57,15 @@ def count_trees(Lat, Long):
         return trees_df, tree_img
     else:
         raise Exception(f"Failed to count trees : {response.status_code}")
+
+
+def geocode(address):
+    params = { "q": address, 'format': 'json' }
+    places = requests.get(f"https://nominatim.openstreetmap.org/search", params=params).json()
+
+    first_place = places[0]
+    longitude = float(first_place["lon"])
+    latitude = float(first_place["lat"])
+    full_address = first_place["display_name"]
+
+    return full_address, latitude, longitude
