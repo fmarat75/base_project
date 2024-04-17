@@ -23,7 +23,7 @@ resultsbtn = st.button('Count Trees')
 if resultsbtn:
 
     st.markdown(" ")  # Adds a space
-    st.markdown(f"The address selected is {full_address}:")
+    st.markdown(f"The address selected is:")
     st.markdown(f"{full_address}")
     st.markdown(" ")  # Adds a space
 
