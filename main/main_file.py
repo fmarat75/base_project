@@ -22,8 +22,8 @@ def download_satellite_image(api_key, latitude, longitude, zoom=21, size='600x60
 # Function to count trees via local API
 def count_trees(Lat, Long, step):
 
-    url = f"http://127.0.0.1:8000/counttrees?lat={Lat}&long={Long}&step={step}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
-    ##url = f"https://baseprojectapi-jf3na7mc5a-ew.a.run.app/counttrees?lat={Lat}&long={Long}&step={step}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
+    ##url = f"http://127.0.0.1:8000/counttrees?lat={Lat}&long={Long}&step={step}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
+    url = f"https://baseprojectapi-jf3na7mc5a-ew.a.run.app/counttrees?lat={Lat}&long={Long}&step={step}&api_key={GOOGLE_MAPS_KEY}" #### to be changed to website URL
     response = requests.get(url)
 
     if response.status_code == 200:
