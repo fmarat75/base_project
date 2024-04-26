@@ -44,7 +44,7 @@ resultsbtn = st.button('Count Trees')
 if resultsbtn:
     with st.spinner("Counting trees..."):
         progress_bar = st.progress(0)
-        total_time = {'20 seconds': 50, '8 minutes': 450, '13 minutes': 800}[time_estim]
+        total_time = {'50 seconds': 50, '8 minutes': 450, '13 minutes': 800}[time_estim]
         #total_time = 20
         for i in range(total_time):
             time.sleep(1)  # Sleep for a second
