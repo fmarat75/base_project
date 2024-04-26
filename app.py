@@ -30,7 +30,7 @@ st.markdown(" ")  # Adds a space
 area_df = pd.DataFrame({
     'area': ["75m x 75m", "150m x 150m", "225m x 225m"],
     'step': [0, 1, 2],
-    'time': ["20 seconds", "3 minutes", "5 minutes"]
+    'time': ["50 seconds", "8 minutes", "13 minutes"]
     })
 option = st.selectbox('Select size area', area_df['area'])
 step = area_df[area_df['area']==option]['step'].iloc[0]
@@ -44,7 +44,7 @@ resultsbtn = st.button('Count Trees')
 if resultsbtn:
     with st.spinner("Counting trees..."):
         progress_bar = st.progress(0)
-        total_time = {'20 seconds': 20, '3 minutes': 180, '3 minutes': 320}[time_estim]
+        total_time = {'20 seconds': 50, '8 minutes': 450, '13 minutes': 800}[time_estim]
         #total_time = 20
         for i in range(total_time):
             time.sleep(1)  # Sleep for a second
